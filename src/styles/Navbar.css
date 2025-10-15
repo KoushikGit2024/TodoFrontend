@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.nav:hover{
+    transition: all;
+    transition-duration: 1000ms;
+    bottom: -5px;
+    color: blueviolet;
+}
