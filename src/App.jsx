@@ -32,8 +32,12 @@ const App = () => {
         const ab=await axios.post('/api/baseroute/login',
                   {},
                   {withCredentials:true});
-        setData(ab.data.data);
-        
+        if(!ab.data?.data)
+          console.log(ab)
+        else{
+          console.log(ab)
+          setData(ab.data.data);
+        }
         // console.log(ab.data.data);
       } catch (error) {
         console.log(error);
