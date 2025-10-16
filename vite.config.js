@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: ' https://todoserver-lpal.onrender.com',
+        target: 'https://todoserver-lpal.onrender.com',
         changeOrigin: true,
       }
     }
