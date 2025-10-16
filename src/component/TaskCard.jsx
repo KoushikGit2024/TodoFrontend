@@ -190,7 +190,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { TaskContext } from "../contexts/TaskContext";
 
-const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
+const TaskCard = ({todo,worklist,setSubWork,setEditIdx,idx }) => {
   // console.log(worklist)
   const {task,setTask} =useContext(TaskContext);
   const [title, setTitle] = useState(todo.title);
@@ -246,50 +246,51 @@ const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
       <div className="w-full">
         <h1 className="text-lg font-semibold text-gray-800">
           Title:{" "}
-          <input
-            contentEditable
-            suppressContentEditableWarning={true}
+          {/* <input
+            // suppressContentEditableWarning={true}
             placeholder="________________________"
-            onInput={(e) => {
-              setTitle(e.target.value);
-              makeChanges(true);
-            }}
+            // onInput={(e) => {
+            //   setTitle(e.target.value);
+            //   makeChanges(true);
+            // }}
+            disabled
             value={title}
-            onBlur={(e) => {
-              if (e.target.value.trim() === "") {
-                // alert("Title can't be empty");
-                setTitle(todo.title);
-              }
-            }}
+            // onBlur={(e) => {
+            //   if (e.target.value.trim() === "") {
+            //     // alert("Title can't be empty");
+            //     setTitle(todo.title);
+            //   }
+            // }}
             className="outline-0 ml-2 px-1 rounded hover:bg-gray-100"
-          />
-            {/* {title} */}
+          /> */}
+            {title}
           {/* </input> */}
         </h1>
 
         <p className="text-gray-600 mt-2">
           <span className="font-medium">Description:</span>
           <input
-            contentEditable
-            suppressContentEditableWarning={true}
+            // contentEditable
+            // suppressContentEditableWarning={true}
             placeholder="________________________"
-            onInput={(e) => {
-              setDescription(e.target.value);
-              console.log(e.target.value)
-              makeChanges(true);
-            }}
-            onBlur={(e) => {
-              if (e.target.value.trim() === "") {
-                setDescription("");
-              }
-            }}
-            className="outline-0 ml-2 px-1 rounded hover:bg-gray-100"
+            // onInput={(e) => {
+            //   setDescription(e.target.value);
+            //   console.log(e.target.value)
+            //   makeChanges(true);
+            // }}
+            disabled
+            // onBlur={(e) => {
+            //   if (e.target.value.trim() === "") {
+            //     setDescription("");
+            //   }
+            // }}
+            className="outline-0 ml-2 px-1 rounded"
             value={description}
           />
         </p>
         <p>
           WorkList : 
-          <select name="" id="filterType" className='outline-none bg-red-500 w-auto ml-2 pl-1' defaultValue={listType}
+          {/* <select name="" id="filterType" className='outline-none bg-red-500 w-auto ml-2 pl-1' defaultValue={listType}
             onChange={(e)=>{
               if(e.target.value!==todo.listType){
                 setListType(e.target.value);
@@ -302,10 +303,10 @@ const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
                 <option value={`${ele}`} key={idx}>{ele}</option>  
               ))
             }
-          </select>
-          {/* {
+          </select> */}
+          {
             (todo.listType) ?todo.listType[0].toUpperCase() +todo.listType.slice(1).toLowerCase() : ""
-          } */}
+          }
         </p>
       </div>
 
@@ -316,6 +317,7 @@ const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
           className="p-1 rounded hover:bg-gray-100"
           onClick={()=>{
               // setExpand(true);
+              setEditIdx(idx);
               setSubWork(2);
             }}
           title={changes ? "Save" : "Edit"}
@@ -395,13 +397,6 @@ const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
         >
           {expand ? "Hide Subtasks ▲" : "Show Subtasks ▼"}
         </div>
-        {
-          // (expand||1) && (
-          //   <button className="" >
-          //     ➕
-          //   </button>    
-          // )
-        }
       </div>
       
 
@@ -426,42 +421,10 @@ const TaskCard = ({todo,worklist,setSubWork,setEditIdx }) => {
                     console.log('hii3t')
                   }}
                 >
-                  <input
-                    contentEditable
-                    suppressContentEditableWarning={true}
-                    placeholder="________________________"
-                    onInput={(e) => {
-                      setNewSub(pre =>{return {...pre,title:e.target.value}});
-                      console.log({...newSub,title:(e.target.value).trim()})
-                      makeChanges(true);
-                    }}
-                    // onBlur={(e) => {
-                    //   if (e.target.value.trim() === "") {
-                    //     setDescription("");
-                    //   }
-                    // }}
-                    className="outline-0 inline ml-2 px-1 max-w-1/2 rounded hover:bg-gray-100"
-                    defaultValue={item.title}
-                  />{'=>'}
-                  <input
-                    contentEditable
-                    suppressContentEditableWarning={true}
-                    placeholder="________________________"
-                    onInput={(e) => {
-                      setNewSub(pre =>{return {...pre,description:(e.target.value).trim()}});
-                      console.log({...newSub,description:(e.target.value).trim()})
-                      makeChanges(true);
-                    }}
-                    // onBlur={(e) => {
-                    //   if (e.target.value.trim() === "") {
-                    //     setDescription("");
-                    //   }
-                    // }}
-                    // onMouseLeave={}
-                    className="outline-0 max-w-1/2 inline ml-2 px-1 rounded hover:bg-gray-100"
-                    defaultValue={item.description}
-                  />
-                  {/* {item.description} */}
+                  {item.title}
+                  {(item.description)?'=>':''}
+                  
+                  {item.description}
                 </p>
               </div>
               <div className="flex gap-2">

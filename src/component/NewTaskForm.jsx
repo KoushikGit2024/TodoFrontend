@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { DataContext } from "../contexts/DataContext";
 import { useNavigate } from "react-router-dom";
+import { TaskContext } from "../contexts/TaskContext";
 
 const NewTaskForm = ({ subWork,setSubWork, onTaskCreated }) => {
   const { data } = useContext(DataContext);
-
+  const {task,setTask}=useContext(TaskContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [listType, setListType] = useState("all");
@@ -18,7 +19,7 @@ const NewTaskForm = ({ subWork,setSubWork, onTaskCreated }) => {
                     mm=`${(temp/10)?'':'0'}${temp}`;
                     dd=arr[2];
                     yyyy=arr[3];
-                    return `${yyyy}-${dd}-${mm}`;
+                    return `${yyyy}-${mm}-${dd}`;
                   }); // YYYY-MM-DD
   const [endTime, setEndTime] = useState(()=>{
                     let arr=Date().split(' ');
@@ -76,7 +77,11 @@ const NewTaskForm = ({ subWork,setSubWork, onTaskCreated }) => {
       };
 
       const res = await axios.post("/api/user/tasks/worklist", taskData);
-      console.log(res.data);
+      if(res.data?.task){
+        let newList =[res.data.task,...task];
+        console.log(newList)
+        setTask(newList)
+      }
       setMessage({ text: "Task created successfully!", type: "success" });
 
       // Reset form
@@ -102,8 +107,8 @@ const NewTaskForm = ({ subWork,setSubWork, onTaskCreated }) => {
   // }
 
   return (
-    <div className="bg-[#ececdb] w-full min-h-screen flex items-center justify-center p-4">
-      <div className="bg-[#ece3d9] shadow-2xl w-full max-w-2xl rounded-2xl overflow-hidden border-2 border-[#EBCB90] p-6">
+    <div className="bg-[#ececdb] w-full h-full flex items-center justify-center p-4">
+      <div className="bg-[#ece3d9] shadow-2xl w-full max-w-2xl rounded-2xl overflow-hidden border-2 border-[#0edbff] p-6">
         <form className="flex flex-col w-full" onSubmit={handleSubmit}>
           <fieldset className="border-4 border-[#d4d4d4] p-4 rounded-lg flex flex-col gap-4">
             <legend className="text-3xl px-4 font-bold border-2 border-[#EBCB90] rounded-md">
