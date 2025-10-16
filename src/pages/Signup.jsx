@@ -24,8 +24,8 @@ const Signup = () => {
       return;
     }
     try {
-      const okState = await axios.get('/api/baseroute/signup', {
-        params: { search: e.target.value.toLowerCase() }
+      const okState = await axios.get(`/api/baseroute/signup?search=${e.target.value.toLowerCase()}`, {
+        // params: { search: e.target.value.toLowerCase() }
       });
       const res = okState.data;
       if (res.code === 100) {
