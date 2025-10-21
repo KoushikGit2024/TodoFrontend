@@ -12,10 +12,10 @@ const Protected = (props) => {
     useEffect(()=>{
       if(!data) return;
 
-      if(Object.keys(data)?.length!==0){
+      if(Object.keys(data??{})?.length!==0){
         fetchState(true);
       }
-      if(!loading&&Object.keys(data).length===0)
+      if(!loading&&Object.keys(data??{}).length===0)
         navigate('/user/login');
     },[data,loading])
   return (
