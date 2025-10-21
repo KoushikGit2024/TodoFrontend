@@ -4,12 +4,14 @@ import { LoadingContext } from '../contexts/LoadingContext';
 import { useNavigate } from 'react-router-dom';
 
 const Protected = (props) => {
-    const {data,useData} = useContext(DataContext);
+    const {data} = useContext(DataContext);
     const {loading,setLoading} = useContext(LoadingContext);
     const [fetched,fetchState]=useState(false);
     // console.log(loading)
     const navigate=useNavigate();
     useEffect(()=>{
+      if(!data) return;
+
       if(Object.keys(data)?.length!==0){
         fetchState(true);
       }
