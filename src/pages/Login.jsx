@@ -164,6 +164,7 @@ const Login = () => {
       setMessage({ text: res.data.msg, type: "success" });
       navigate("/user");
     } catch (err) {
+      console.log(err)
       setMessage({ text: err.response?.data?.msg || "Login failed", type: "error" });
     } finally {
       setLoading(false);
