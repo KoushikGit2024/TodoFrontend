@@ -160,8 +160,8 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await axios.post("/api/baseroute/login", { authParam:authParam, password:password });
-      setData(res);
-      console.log(res.data.data);
+      setData(res.data.data);
+      console.log(res);
       setMessage({ text: res.data.msg, type: "success" });
       navigate("/user");
     } catch (err) {
