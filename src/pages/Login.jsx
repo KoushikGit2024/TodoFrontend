@@ -159,8 +159,9 @@ const Login = () => {
   const fetchUserData = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("/api/baseroute/login", { authParam, password });
+      const res = await axios.post("/api/baseroute/login", { authParam:authParam, password:password });
       setData(res.data.data);
+      console.log(res.data.data);
       setMessage({ text: res.data.msg, type: "success" });
       navigate("/user");
     } catch (err) {
