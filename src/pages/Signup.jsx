@@ -340,6 +340,7 @@ const Signup = () => {
             onChange={(e) => setFullName(e.target.value)}
             className="w-full bg-white/70 focus:bg-white/90 outline-none caret-[#3396D3] h-12 px-3 text-[#3396D3] border border-[#EBCB90]/70 rounded-md transition"
             required
+            autoComplete="name"
             whileFocus={{ scale: 1.02 }}
           />
 
@@ -350,6 +351,7 @@ const Signup = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full py-2.5 px-3 text-base bg-white/70 focus:bg-white/90 text-[#3396D3] border border-[#EBCB90]/70 rounded-md outline-none caret-[#3396D3]"
               required
+              autoComplete="email"
               whileFocus={{ scale: 1.02 }}
             />
             <motion.input
@@ -358,6 +360,7 @@ const Signup = () => {
               onChange={(e) => setMobile(e.target.value)}
               className="w-full py-2.5 px-3 text-base bg-white/70 focus:bg-white/90 text-[#3396D3] border border-[#EBCB90]/70 rounded-md outline-none caret-[#3396D3]"
               required
+              autoComplete="mobile tel"
               whileFocus={{ scale: 1.02 }}
             />
           </div>
@@ -370,6 +373,7 @@ const Signup = () => {
                 onChange={checkUserName}
                 className="w-full py-2.5 px-3 outline-none text-[#3396D3] caret-[#3396D3] bg-transparent"
                 required
+                autoComplete="username"
               />
               <img
                 src="/greenTick.png"
@@ -385,6 +389,7 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="sm:w-1/2 w-full py-2.5 px-3 text-base bg-white/70 focus:bg-white/90 text-[#3396D3] border border-[#EBCB90]/70 rounded-md outline-none caret-[#3396D3]"
               required
+              autoComplete="new-password"
               whileFocus={{ scale: 1.02 }}
             />
           </div>

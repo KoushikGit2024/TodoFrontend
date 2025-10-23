@@ -7,13 +7,13 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://todoserver-lpal.onrender.com',
-        // target:'http://localhost:7400',
-        changeOrigin: true,
-      }
-    }
-  }
+  // server: {
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://todoserver-lpal.onrender.com',
+    //     // target:'http://localhost:7400',
+    //     changeOrigin: true,
+    //   }
+    // }
+  // }
 })

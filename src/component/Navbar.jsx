@@ -179,7 +179,7 @@ const Navbar = () => {
     <div className="fixed w-full flex items-center justify-center z-[100]"
       style={{background:"linear-gradient(rgba(235,227,217,0.9), rgba(235,227,217,0.2))", backdropFilter: 'blur(8px)'}}
     >
-      <nav className='w-[95%] bg-[#ebe3d9] h-16 mt-4 rounded-full p-4 border-2 min-w-[540px] flex items-center justify-between shadow-xl' style={{color:"#3396D3"}}>
+      <nav className='w-[95%] bg-[#ebe3d9] h-16 mt-4 rounded-full p-4 border-2 min-w-[350px] flex items-center justify-between shadow-xl' style={{color:"#3396D3"}}>
         
         {/* Logo */}
         <div className="logo w-14 h-14 flex items-center justify-center -mr-6">
@@ -187,29 +187,37 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links & Search */}
-        <div className='w-[80%] flex justify-between items-center'>
-          <div className="flex items-center justify-around w-[50%] min-w-[400px]">
+        <div className='w-[60%] bgj-emerald-300 flex justify-between items-center'>
+          <div className="flex items-center justify-around w-[60%] min-w-[200px]">
 
             <Link to="/" className='bg-white border-2 border-[#b2b2b2] hover:scale-105 transition-transform duration-300 rounded-full p-1'>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-8">
+              <svg viewBox="0 0 24 24" className="h-8">
                 <path d="M12,3c0,0-6.186,5.34-9.643,8.232C2.154,11.416,2,11.684,2,12c0,0.553,0.447,1,1,1h2v7c0,0.553,0.447,1,1,1h3  c0.553,0,1-0.448,1-1v-4h4v4c0,0.552,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-7h2c0.553,0,1-0.447,1-1c0-0.316-0.154-0.584-0.383-0.768  C18.184,8.34,12,3,12,3z" fill="#3396D3"/>
               </svg>
             </Link>
 
-            <div className="search bg-[#e4e4e4] h-10 rounded-full border-2 border-[#EBCB90] p-1 flex items-center w-[80%]">
-              <input 
-                type="text" 
-                className='outline-none rounded-l-full pl-3 bg-transparent flex-1 h-8' 
-                placeholder='Search Task' 
-                style={{caretColor:"#3396D3"}}
-                onInput={(e)=>searchHandler(e.target.value)}
+            <div className="search h-10 rounded-full border-2 border-[#EBCB90] p-1 flex items-center flex-1 min-w-[120px] sm:min-w-[160px] md:min-w-[200px] lg:min-w-[250px] bg-[#e4e4e4]">
+              <input
+                type="text"
+                className="outline-none rounded-l-full pl-3 bg-transparent flex-1 h-8 text-sm sm:text-base"
+                placeholder="Search Task"
+                style={{ caretColor: "#3396D3" }}
+                onInput={(e) => searchHandler(e.target.value)}
               />
-              <span className='searchIcon border-l-2 flex items-center justify-center ml-1 h-8' style={{borderColor:"#3396D3"}}>
-                <svg viewBox="0 0 32 32" className='h-6'>
-                  <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" fill="#3396D3"/>
+              <span
+                className="searchIcon border-l-2 flex items-center justify-center ml-1 h-8 pl-2"
+                style={{ borderColor: "#3396D3" }}
+              >
+                <svg viewBox="0 0 32 32" className="h-6">
+                  <path
+                    d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
+                    s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  
+                    C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
+                    fill="#3396D3"
+                  />
                 </svg>
               </span>
-            </div>    
+            </div>
           </div>
 
           {/* Links (Desktop) */}

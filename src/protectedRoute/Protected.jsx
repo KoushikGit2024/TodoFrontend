@@ -21,7 +21,7 @@ const Protected = (props) => {
   return (
     <div className='w-full h-full flex items-center justify-center'>
       {(loading)&&(
-        <div className=' bg-[green] flex flex-col items-center justify-center'>
+        <div className=' bg-[transparent] flex flex-col items-center justify-center'>
             <img src="/Loader.gif" className='w-50 h-50'/>
             <p className='text-3xl mt-[-20px]'>Loading.....</p>
         </div>
